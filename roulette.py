@@ -12,7 +12,7 @@ class Roulette:
     def roll(self):
         '''get next roll result'''
         roll = random.choice(self.roulette)
-        print(roll)
+        # print(roll)
         return roll
     #eof roll
 
