@@ -19,10 +19,14 @@ class Roulette:
     @staticmethod
     def getDozen(number):
         ''' return 1st, 2nd or 3rd dozen, or None '''
+        result = None
+        
         if 0 < number < 37:
-            return 1 + int(number/12.1)
-        else:
-            return None
+            result = 1 + int(number/12.1)
+        elif number == 0:
+            result = 0
+        
+        return result 
     #eof getDozen
 
     @staticmethod
