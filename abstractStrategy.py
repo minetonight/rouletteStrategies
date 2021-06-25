@@ -5,11 +5,13 @@ import matplotlib.pyplot as plt
 import abc 
 
 def fibonacci(n):
-    if n == 1 or n == 2:
-        return 1
-    else:
-        return fibonacci(n-1) + fibonacci(n-2)
-
+    '''https://stackoverflow.com/a/32215743 '''
+    computed = {0: 0, 1: 1}
+    def fib_inner(n):
+        if n not in computed:
+            computed[n] = fib_inner(n-1) + fib_inner(n-2)
+        return computed[n]
+    return fib_inner(n)
 
 class AbstractStrategy:
     def __init__(self, budget, bet, exitRules):
@@ -66,7 +68,7 @@ class AbstractStrategy:
         bigMoney = self.startBudget * self.winCondition
         roulette = Roulette()
 
-        while lowMoney <= self.__money <= bigMoney:
+        while lowMoney <= self.__money <= bigMoney: # and len(self.moneyChart) < 1000:
             self.placeBets()
             roll = roulette.roll()
             self.updateAndCollect(roll)
