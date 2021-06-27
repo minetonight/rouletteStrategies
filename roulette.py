@@ -6,6 +6,7 @@ class Roulette:
     def __init__(self):
         self.roulette = list(range(1, 37))
         self.roulette.append(0)
+        # self.roulette.append(00) # american roulette is a scam :)
         # print(self.roulette)
         # print(len(self.roulette))
 
