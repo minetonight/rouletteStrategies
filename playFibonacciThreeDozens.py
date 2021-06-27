@@ -54,7 +54,7 @@ class ThreeDozenStrategy(AbstractStrategy):
     # eof updateBetPots  
 
 if __name__ == "__main__":
-    strat = ThreeDozenStrategy(1000, 10, (0.66, 1.5))
+    strat = ThreeDozenStrategy(50000, 100, (0.55, 1.15))
     strat.play()
     strat.getPlot()
 
