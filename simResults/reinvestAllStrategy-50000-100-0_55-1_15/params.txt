@@ -1,0 +1,2 @@
+reinvestAllStrategy()
+strat = ThreeDozenStrategy(50000, 100, (0.55, 1.15)) 

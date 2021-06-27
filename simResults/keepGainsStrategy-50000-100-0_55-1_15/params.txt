@@ -1,0 +1,3 @@
+def keepTheGainsStrategy():
+    '''overall result - 3 out of many many attempts '''
+    strat = ThreeDozenStrategy(50000, 100, (0.55, 1.15)) 
