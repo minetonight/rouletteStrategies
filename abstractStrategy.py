@@ -30,7 +30,7 @@ class AbstractStrategy:
         elif self.__money<= self.startBudget * self.lossCondition:
             return False
         else:
-            return None
+            return None # TODO fixme
     #eof isWin
 
     def getPlot(self):
@@ -91,6 +91,10 @@ class AbstractStrategy:
         self.__money += bet * multiplier
         return None
     # eof collect
+
+    def getMoney(self):
+        return self.__money
+    # eof getMoney
 
 if __name__ == "__main__":
     strat = AbstractStrategy(1000, 10, (0.66, 1.5))
