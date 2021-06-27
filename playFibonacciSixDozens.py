@@ -1,5 +1,4 @@
 from abstractStrategy import fibonacci
-from random import random, randint
 from roulette import Roulette
 from playFibonacciThreeDozens import ThreeDozenStrategy
 

@@ -158,7 +158,6 @@ def findTopMoneyGains():
         counter += 1
         print("progress = %d of %d" % (counter, testsLen))
 
-        wins = 0
         avgLen = 0
         tests = 10000
         for i in range(1, tests):
