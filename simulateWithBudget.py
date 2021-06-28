@@ -1,24 +1,33 @@
+from playTwoDozens import TwoDozenStrategy
+from abstractStrategy import AbstractStrategy
 from playFibonacciThreeDozens import ThreeDozenStrategy
 from playFibonacciSixDozens import SixDozenStrategy
 
 import matplotlib.pyplot as plt
 
-def reinvestAllStrategy():
-    strat = ThreeDozenStrategy(50000, 100, (0.55, 1.15))
+def reinvestAllStrategy(strat:AbstractStrategy, upperBound, showPlot = False):
     initialMoney = strat.getMoney()
     finalMoney = initialMoney
     chartHistory = []
 
-    while finalMoney > 0:
+    while 0 < finalMoney < upperBound:
         strat.play()
         finalMoney = strat.getMoney()
         chartHistory += strat.moneyChart
-        print("     The result is a win: %s" % (strat.isWin()))
-        strat = ThreeDozenStrategy(finalMoney, strat.bet, (strat.lossCondition, strat.winCondition))
-        print("Now we have %dc" % (finalMoney))
+        
+        if showPlot:
+            print("     The result is a win: %s" % (strat.isWin()))
+        stratClass = type(strat)
+        strat = stratClass(finalMoney, strat.bet, (strat.lossCondition, strat.winCondition))
+        
+        if showPlot:
+            print("Now we have %dc" % (finalMoney))
 
     strat.moneyChart = chartHistory
-    strat.getPlot()
+    if showPlot:
+        strat.getPlot()
+
+    return finalMoney, chartHistory 
 # eof reinvestAllStrategy
 
 def keepTheGainsStrategy():
@@ -55,5 +64,11 @@ def keepTheGainsStrategy():
 
 # eof keepTheGainsStrategy
 
-# keepTheGainsStrategy()
-reinvestAllStrategy()
+
+if __name__ == "__main__":
+    # keepTheGainsStrategy()
+    strat = ThreeDozenStrategy(50000, 100, (0.55, 1.15))
+    # strat = TwoDozenStrategy(400, 100, (0.05, 1.5))
+    money, chart = reinvestAllStrategy(strat, strat.startBudget * 3, showPlot = True)
+    # strat.moneyChart = chart
+    # strat.getPlot()
